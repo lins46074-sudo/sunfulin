@@ -1,0 +1,27 @@
+[project]
+name = "langchain-rag"
+version = "0.1.0"
+description = "轻量版 Claude + LangChain RAG Agent（DeepSeek 兼容端点）"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain==1.4.1",
+    "langchain-anthropic==1.7.2",
+    "langchain-chroma==1.1.0",
+    "langchain-huggingface==1.2.2",
+    "langchain-text-splitters",
+    "sentence-transformers",
+    "python-dotenv",
+    "streamlit>=1.64.0",
+]
+
+# 注：清华源对部分 wheel 返回 403，故默认使用官方 PyPI。
+# 如官方源下载过慢，可在 pyproject.toml 同级目录创建 .uv/index.toml 或改用其他镜像。
+
+# torch 走官方 CPU 索引，避免下载 2GB+ 的 CUDA 版本
+[[tool.uv.index]]
+name = "torch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "torch-cpu" }

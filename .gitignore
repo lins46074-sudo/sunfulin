@@ -1,0 +1,11 @@
+# 凭证：绝对不能提交
+.env
+
+# 虚拟环境与向量库
+.venv/
+chroma_db/
+__pycache__/
+*.pyc
+
+# 模型缓存
+.cache/
