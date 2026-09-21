@@ -2,7 +2,9 @@
 name = "langchain-rag"
 version = "0.1.0"
 description = "轻量版 Claude + LangChain RAG Agent（DeepSeek 兼容端点）"
-requires-python = ">=3.10"
+# 注意：不能写成 >=3.10。sentence-transformers 依赖的 onnxruntime
+# 只有 cp311 及以上的 wheel，3.10 环境装不上。
+requires-python = ">=3.11"
 dependencies = [
     "langchain==1.4.1",
     "langchain-anthropic==1.7.2",

@@ -14,7 +14,7 @@
 | 项目角色 | 独立开发（个人项目） |
 | 项目周期 | 2026.09 |
 | 代码规模 | 7 个 Python 模块 + 21 个单元测试，约 600 行 |
-| 技术栈 | Python 3.10+ / LangChain 1.x / Chroma / BGE / Streamlit / uv |
+| 技术栈 | Python 3.11+ / LangChain 1.x / Chroma / BGE / Streamlit / uv |
 | 开源地址 | https://github.com/lins46074-sudo/sunfulin |
 
 ---

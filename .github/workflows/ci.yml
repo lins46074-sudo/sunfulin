@@ -15,8 +15,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # 项目声明 requires-python >= 3.10，这里跑上下界两端
-        python-version: ["3.10", "3.13"]
+        # 项目 requires-python 为 >=3.11（onnxruntime 无 cp310 wheel），
+        # 这里跑下界与当前稳定版两端
+        python-version: ["3.11", "3.13"]
 
     steps:
       - name: 检出代码

@@ -1,7 +1,7 @@
 # 📚 本地知识库 RAG 问答智能体
 
 [![CI](https://github.com/lins46074-sudo/sunfulin/actions/workflows/ci.yml/badge.svg)](https://github.com/lins46074-sudo/sunfulin/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![LangChain](https://img.shields.io/badge/LangChain-1.x-1C3C3C)](https://python.langchain.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)](tests/)
@@ -97,7 +97,7 @@
 
 ### 环境要求
 
-- Python 3.10+
+- Python 3.11+
 - [uv](https://github.com/astral-sh/uv)（依赖管理）
 
 > 首次安装需下载约 450MB：torch CPU 版 118MB + 依赖包 + 中文向量模型 95MB。
@@ -202,7 +202,7 @@ uv run pytest -q
 - 内容解析能否容忍多种返回结构
 
 外部依赖（向量检索）用 `monkeypatch` 替换，只测格式化与流转逻辑。
-CI 配置见 [.github/workflows/ci.yml](.github/workflows/ci.yml)，在 Python 3.10 与 3.13 上双版本验证。
+CI 配置见 [.github/workflows/ci.yml](.github/workflows/ci.yml)，在 Python 3.11 与 3.13 上双版本验证。
 
 ## ⚙️ 可调参数
 
@@ -267,7 +267,7 @@ Python 在启动时读取 `.env`，修改后需**重启程序**（关掉窗口�
 
 | 组件 | 选型 |
 |---|---|
-| 语言 / 依赖管理 | Python 3.10+ / uv |
+| 语言 / 依赖管理 | Python 3.11+ / uv |
 | Agent 框架 | LangChain 1.x（`create_agent` + Tool Calling） |
 | 向量数据库 | Chroma（本地持久化） |
 | 向量模型 | BAAI/bge-small-zh-v1.5（中文优化，95MB，CPU 推理） |
