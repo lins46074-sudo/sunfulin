@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: 单元测试 (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # 项目声明 requires-python >= 3.10，这里跑上下界两端
+        python-version: ["3.10", "3.13"]
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: 安装 Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: 安装依赖
+        # 测试用例不加载向量模型、不调用模型接口，
+        # 因此无需 API 凭证，也不受模型下载超时影响。
+        run: uv sync --dev --python ${{ matrix.python-version }}
+
+      - name: 运行测试
+        run: uv run --python ${{ matrix.python-version }} pytest -q
+
+  lint:
+    name: 代码风格检查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: 检查代码可编译、无语法错误
+        run: |
+          uv python install 3.13
+          uv run --python 3.13 python -m compileall -q config.py prompts.py store.py ingest.py rag.py chat.py web.py

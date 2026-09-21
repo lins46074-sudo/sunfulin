@@ -1,0 +1,25 @@
+# 非 uv 用户的备选安装方式。
+# 推荐优先使用 uv（见 README「快速开始」），依赖解析更快且能锁定版本。
+#
+# 安装分两步，顺序不能反：
+#
+#   第 1 步：先装 CPU 版 torch。直接 pip install torch 会拉到 2GB+ 的 CUDA 版本，
+#           本项目只做 CPU 向量推理，用不上 GPU。
+#     pip install torch --index-url https://download.pytorch.org/whl/cpu
+#
+#   第 2 步：安装其余依赖
+#     pip install -r requirements.txt
+#
+# 注：国内镜像源对部分 wheel 会返回 403，若安装失败请改用官方 PyPI。
+
+langchain==1.4.1
+langchain-anthropic==1.7.2
+langchain-chroma==1.1.0
+langchain-huggingface==1.2.2
+langchain-text-splitters
+sentence-transformers
+python-dotenv
+streamlit>=1.64.0
+
+# 开发依赖（可选）：运行单元测试需要
+pytest>=8.0

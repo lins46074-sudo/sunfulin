@@ -14,6 +14,16 @@ dependencies = [
     "streamlit>=1.64.0",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+# 让测试能直接 import config / rag / ingest 等项目根目录下的模块
+pythonpath = ["."]
+testpaths = ["tests"]
+
 # 注：清华源对部分 wheel 返回 403，故默认使用官方 PyPI。
 # 如官方源下载过慢，可在 pyproject.toml 同级目录创建 .uv/index.toml 或改用其他镜像。
 
